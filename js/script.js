@@ -28,13 +28,31 @@ const slides = [
 
 console.log(slides);
 
-// Partendo dal template fornito renderizzare lo slider con Vue
+// 1.Partendo dal template fornito renderizzare lo slider con Vue
 const app = new Vue(
     {
         el: '#app',
         data: {
             slides,
             activeSlidesIndex: 0,
+        },
+        methods: {
+            // funzione per visualizzare al click l'immagine precedente
+            showPrev() {
+                if (this.activeSlidesIndex > 0) {
+                    this.activeSlidesIndex--
+                } else {
+                    this.activeSlidesIndex = 4
+                }
+            },
+            // funzione per visualizzare al click l'immagine successiva
+            showNext() {
+                if (this.activeSlidesIndex < 4) {
+                    this.activeSlidesIndex++
+                } else {
+                    this.activeSlidesIndex = 0
+                }
+            }
         }
     }
 );
